@@ -1,0 +1,303 @@
+/* ================================
+   Design System - Những Con Đường Vô Hình
+   ================================ */
+
+:root {
+  /* Underground Theme */
+  --underground-primary: #5D4037;
+  --underground-accent: #A1887F;
+  --underground-dark: #3E2723;
+  
+  /* Ground Theme */
+  --ground-primary: #2E7D32;
+  --ground-accent: #81C784;
+  --ground-dark: #1B5E20;
+  
+  /* Air Theme */
+  --air-primary: #0277BD;
+  --air-secondary: #C62828;
+  --air-accent: #4FC3F7;
+  
+  /* Future Theme */
+  --future-primary: #FFFFFF;
+  --future-accent: #00E5FF;
+  --future-dark: #0097A7;
+  
+  /* Common */
+  --amber-glow: #f59e0b;
+  --text-dark: #1c1917;
+  --text-light: #fafaf9;
+}
+
+/* ================================
+   Smooth Scroll & Performance
+   ================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================================
+   Parallax Utilities
+   ================================ */
+
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parallax-slow {
+  transform: translateY(calc(var(--scroll-progress, 0) * -50px));
+}
+
+.parallax-medium {
+  transform: translateY(calc(var(--scroll-progress, 0) * -100px));
+}
+
+.parallax-fast {
+  transform: translateY(calc(var(--scroll-progress, 0) * -150px));
+}
+
+/* ================================
+   Counter Animation
+   ================================ */
+
+@keyframes counter-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.counter-animate {
+  animation: counter-appear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ================================
+   Enhanced Glassmorphism
+   ================================ */
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ================================
+   Map Layer Transitions
+   ================================ */
+
+.map-layer {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.map-layer.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+.map-layer.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+/* ================================
+   Timeline Horizontal Scroll
+   ================================ */
+
+.timeline-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d6d3d1 transparent;
+}
+
+.timeline-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.timeline-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timeline-scroll::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 10px;
+}
+
+.timeline-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e;
+}
+
+/* ================================
+   Page Transition Effects
+   ================================ */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* ================================
+   Interactive Hover Effects
+   ================================ */
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.hover-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+  transform: scale(1.02);
+}
+
+/* ================================
+   Loading States
+   ================================ */
+
+@keyframes shimmer-loading {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 50%,
+    #f0f0f0 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer-loading 2s infinite;
+}
+
+/* ================================
+   Responsive Typography
+   ================================ */
+
+.text-responsive-xl {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.text-responsive-base {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+/* ================================
+   Accessibility
+   ================================ */
+
+.focus-ring:focus {
+  outline: 2px solid var(--amber-glow);
+  outline-offset: 2px;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--amber-glow);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  border-radius: 4px;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ================================
+   Print Styles
+   ================================ */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}
