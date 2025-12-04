@@ -143,10 +143,30 @@ export const GroundPage: React.FC = () => {
                                 Tiếng bom đạn không át được tiếng hát. Âm nhạc là vũ khí tinh thần, là nguồn động viên to lớn cho những người lính lái xe và cô gái mở đường.
                             </p>
                             <div className="space-y-3">
-                                <SongItem title="Cô Gái Mở Đường" artist="Nhạc sĩ: Xuân Giao" duration="03:45" />
-                                <SongItem title="Trường Sơn Đông, Trường Sơn Tây" artist="Thơ: Phạm Tiến Duật" duration="04:12" />
-                                <SongItem title="Bài Ca Bên Cánh Võng" artist="Nhạc sĩ: Nguyên Nhung" duration="03:20" />
-                                <SongItem title="Tiểu Đội Xe Không Kính" artist="Thơ: Phạm Tiến Duật" duration="03:55" />
+                                <SongItem
+                                    title="Cô Gái Mở Đường"
+                                    artist="Nhạc sĩ: Xuân Giao"
+                                    duration="03:45"
+                                    youtubeUrl="https://www.youtube.com/watch?v=YhG0YQWvIK8"
+                                />
+                                <SongItem
+                                    title="Trường Sơn Đông, Trường Sơn Tây"
+                                    artist="Thơ: Phạm Tiến Duật"
+                                    duration="04:12"
+                                    youtubeUrl="https://www.youtube.com/watch?v=5vBGOrI6yBk"
+                                />
+                                <SongItem
+                                    title="Bài Ca Bên Cánh Võng"
+                                    artist="Nhạc sĩ: Nguyên Nhung"
+                                    duration="03:20"
+                                    youtubeUrl="https://www.youtube.com/watch?v=nH7gHqD4XAM"
+                                />
+                                <SongItem
+                                    title="Tiểu Đội Xe Không Kính"
+                                    artist="Thơ: Phạm Tiến Duật"
+                                    duration="03:55"
+                                    youtubeUrl="https://www.youtube.com/watch?v=VNjW4FYdlrA"
+                                />
                             </div>
                         </div>
                         <div className="flex items-center justify-center">
@@ -181,8 +201,13 @@ const TimelineItem = ({ year, title, desc, isLast }: any) => (
     </div>
 );
 
-const SongItem = ({ title, artist, duration }: any) => (
-    <button className="w-full flex justify-between items-center p-4 bg-slate-50 rounded-xl hover:bg-emerald-50 hover:shadow-md transition-all duration-300 cursor-pointer group border border-transparent hover:border-emerald-200 text-left active:scale-[0.99]">
+const SongItem = ({ title, artist, duration, youtubeUrl }: any) => (
+    <a
+        href={youtubeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full flex justify-between items-center p-4 bg-slate-50 rounded-xl hover:bg-emerald-50 hover:shadow-md transition-all duration-300 cursor-pointer group border border-transparent hover:border-emerald-200 text-left active:scale-[0.99]"
+    >
         <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-400 group-hover:text-emerald-600 transition-colors shadow-sm">
                 <Play size={14} fill="currentColor" />
@@ -196,5 +221,5 @@ const SongItem = ({ title, artist, duration }: any) => (
             <span className="text-xs font-mono text-slate-400">{duration}</span>
             <Speaker size={18} className="text-slate-300 group-hover:text-emerald-500 opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0" />
         </div>
-    </button>
+    </a>
 );
