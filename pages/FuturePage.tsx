@@ -1,7 +1,66 @@
-import React from 'react';
-import { Send, ArrowUpRight, TrendingUp, Globe, Cpu, ChevronRight, Train, Plane, Waypoints } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Send, ChevronRight, Train, Plane, Waypoints, ArrowRight } from 'lucide-react';
+import { sendToDiscord, saveStoryLocally, getTotalStories } from '../services/discordService';
 
 export const FuturePage: React.FC = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        year: '',
+        front: '',
+        story: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [totalStories, setTotalStories] = useState(12450);
+
+    useEffect(() => {
+        setTotalStories(getTotalStories());
+    }, []);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!formData.name || !formData.front || !formData.story) {
+            setSubmitStatus('error');
+            setTimeout(() => setSubmitStatus('idle'), 3000);
+            return;
+        }
+
+        setIsSubmitting(true);
+
+        const frontMapping: Record<string, string> = {
+            'dia-dao': 'underground',
+            'truong-son': 'ground',
+            'ha-noi': 'sky',
+            'khac': 'ground'
+        };
+
+        const storyData = {
+            name: formData.name,
+            year: formData.year,
+            front: frontMapping[formData.front] || 'ground',
+            story: formData.story
+        };
+
+        // Save locally first
+        saveStoryLocally(storyData);
+
+        // Try to send to Discord
+        const success = await sendToDiscord(storyData);
+
+        if (success) {
+            setSubmitStatus('success');
+            setTotalStories(getTotalStories());
+            // Reset form
+            setFormData({ name: '', year: '', front: '', story: '' });
+        } else {
+            setSubmitStatus('error');
+        }
+
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+    };
+
     return (
         <div className="min-h-screen bg-slate-50 relative overflow-hidden">
             {/* Background Ambience */}
@@ -81,27 +140,37 @@ export const FuturePage: React.FC = () => {
                                 <div className="bg-amber-50/80 p-6 rounded-3xl border border-amber-100 shadow-inner">
                                     <h4 className="font-bold text-amber-900 mb-2 text-xs uppercase tracking-wide">Số liệu đã thu thập</h4>
                                     <div className="flex items-baseline gap-2">
-                                        <span className="text-4xl font-serif font-bold text-amber-600">12,450</span>
+                                        <span className="text-4xl font-serif font-bold text-amber-600">{totalStories.toLocaleString()}</span>
                                         <span className="text-amber-800 text-sm">câu chuyện</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div className="md:col-span-7">
-                                <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                                <form className="space-y-5" onSubmit={handleSubmit}>
                                     <div className="space-y-4">
                                         <input
                                             type="text"
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                             className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-100 focus:border-blue-300 focus:ring-4 focus:ring-blue-500/10 text-slate-800 placeholder-slate-400 font-medium transition-all shadow-sm outline-none"
                                             placeholder="Họ tên người kể chuyện"
+                                            required
                                         />
                                         <div className="grid grid-cols-2 gap-4">
                                             <input
                                                 type="text"
+                                                value={formData.year}
+                                                onChange={(e) => setFormData({ ...formData, year: e.target.value })}
                                                 className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-100 focus:border-blue-300 focus:ring-4 focus:ring-blue-500/10 text-slate-800 placeholder-slate-400 font-medium transition-all shadow-sm outline-none"
                                                 placeholder="Năm (VD: 1968)"
                                             />
-                                            <select className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-100 focus:border-blue-300 focus:ring-4 focus:ring-blue-500/10 text-slate-800 font-medium transition-all shadow-sm outline-none">
+                                            <select
+                                                value={formData.front}
+                                                onChange={(e) => setFormData({ ...formData, front: e.target.value })}
+                                                className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-100 focus:border-blue-300 focus:ring-4 focus:ring-blue-500/10 text-slate-800 font-medium transition-all shadow-sm outline-none"
+                                                required
+                                            >
                                                 <option value="">Chọn mặt trận...</option>
                                                 <option value="dia-dao">Địa Đạo Củ Chi/Vĩnh Mốc</option>
                                                 <option value="truong-son">Đường Trường Sơn</option>
@@ -111,18 +180,45 @@ export const FuturePage: React.FC = () => {
                                         </div>
                                         <textarea
                                             rows={4}
+                                            value={formData.story}
+                                            onChange={(e) => setFormData({ ...formData, story: e.target.value })}
                                             className="w-full px-6 py-5 rounded-2xl bg-white border border-slate-100 focus:border-blue-300 focus:ring-4 focus:ring-blue-500/10 text-slate-800 placeholder-slate-400 font-medium transition-all shadow-sm outline-none resize-none"
                                             placeholder="Chia sẻ câu chuyện hoặc kỷ vật của gia đình bạn..."
+                                            required
                                         ></textarea>
                                     </div>
-                                    <button className="w-full group relative overflow-hidden bg-slate-900 hover:bg-slate-800 text-white font-bold py-5 px-6 rounded-2xl transition-all shadow-lg hover:shadow-2xl hover:shadow-slate-900/30 flex items-center justify-center gap-3 active:scale-[0.98] btn-shimmer">
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="w-full group relative overflow-hidden bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold py-5 px-6 rounded-2xl transition-all shadow-lg hover:shadow-2xl hover:shadow-slate-900/30 flex items-center justify-center gap-3 active:scale-[0.98] btn-shimmer"
+                                    >
                                         <span className="relative z-10 flex items-center gap-2">
-                                            Gửi Vào Thư Viện Di Sản
+                                            {isSubmitting ? 'Đang gửi...' : 'Gửi Vào Thư Viện Di Sản'}
                                             <span className="bg-white/20 p-1.5 rounded-full group-hover:translate-x-1 transition-transform">
                                                 <ChevronRight size={16} />
                                             </span>
                                         </span>
                                     </button>
+
+                                    {/* Success/Error Messages */}
+                                    {submitStatus === 'success' && (
+                                        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-start gap-3 animate-[fadeIn_0.3s_ease-in]">
+                                            <div className="text-green-600 mt-0.5"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg></div>
+                                            <div className="flex-1">
+                                                <h4 className="font-bold text-green-900 text-sm">Cảm ơn bạn đã chia sẻ!</h4>
+                                                <p className="text-green-700 text-xs mt-1">Câu chuyện của bạn đã được lưu vào thư viện di sản.</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {submitStatus === 'error' && (
+                                        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3 animate-[fadeIn_0.3s_ease-in]">
+                                            <div className="text-red-600 mt-0.5"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg></div>
+                                            <div className="flex-1">
+                                                <h4 className="font-bold text-red-900 text-sm">Vui lòng điền đầy đủ thông tin</h4>
+                                                <p className="text-red-700 text-xs mt-1">Tên, mặt trận và câu chuyện là bắt buộc.</p>
+                                            </div>
+                                        </div>
+                                    )}
                                 </form>
                             </div>
                         </div>
@@ -133,44 +229,31 @@ export const FuturePage: React.FC = () => {
     );
 };
 
-const VisionCard = ({ icon, title, desc, color, image, tag }: any) => {
-    const colorClasses = {
-        amber: 'text-amber-600 bg-amber-50 group-hover:bg-amber-600 group-hover:text-white',
-        blue: 'text-blue-600 bg-blue-50 group-hover:bg-blue-600 group-hover:text-white',
-        green: 'text-emerald-600 bg-emerald-50 group-hover:bg-emerald-600 group-hover:text-white'
-    };
-
-    // Derived light color for button hover bg
-    const buttonHoverClass = {
-        amber: 'group-hover:bg-amber-50 group-hover:text-amber-700',
-        blue: 'group-hover:bg-blue-50 group-hover:text-blue-700',
-        green: 'group-hover:bg-emerald-50 group-hover:text-emerald-700'
-    };
-
+const VisionCard = ({ image, title, description, icon }: any) => {
     return (
-        <div className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-2 h-[550px] flex flex-col cursor-default border border-slate-100">
+        <div className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-2 hover:z-10 h-[550px] flex flex-col cursor-default border border-slate-100">
             <div className="h-64 overflow-hidden relative">
                 <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/90"></div>
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-slate-600 shadow-sm">
-                    {tag}
-                </div>
             </div>
 
-            <div className="p-8 relative flex-grow flex flex-col -mt-16 bg-gradient-to-t from-white via-white to-transparent">
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg transition-colors duration-500 ${(colorClasses as any)[color]}`}>
-                    {icon}
+            <div className="flex-grow p-8 flex flex-col">
+                <div className="flex items-start gap-4 mb-4">
+                    <div className="p-3 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl group-hover:from-blue-500 group-hover:to-cyan-500 transition-all duration-500">
+                        <div className="text-blue-600 group-hover:text-white transition-colors">
+                            {icon}
+                        </div>
+                    </div>
+                    <div className="flex-grow">
+                        <h3 className="text-2xl font-serif font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{title}</h3>
+                    </div>
                 </div>
 
-                <h3 className="text-2xl font-serif font-bold text-slate-800 mb-3 group-hover:text-slate-900">
-                    {title}
-                </h3>
-                <p className="text-slate-500 leading-relaxed text-sm mb-8 flex-grow">
-                    {desc}
-                </p>
+                <p className="text-slate-600 leading-relaxed mb-6 flex-grow">{description}</p>
 
-                <button className={`w-full py-4 rounded-xl border border-slate-200 text-slate-500 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 ${(buttonHoverClass as any)[color]}`}>
-                    Xem chi tiết <ArrowUpRight size={16} />
+                <button className="group/btn flex items-center gap-2 text-blue-600 font-bold hover:gap-3 transition-all">
+                    Khám phá
+                    <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
                 </button>
             </div>
         </div>

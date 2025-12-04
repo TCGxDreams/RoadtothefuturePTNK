@@ -117,7 +117,7 @@ export const SkyPage: React.FC = () => {
 
                 {/* Story Section */}
                 <div className="grid md:grid-cols-2 gap-8 mb-24">
-                    <div className="bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 hover:shadow-[0_30px_60px_rgba(14,165,233,0.15)] transition-all duration-500 hover:-translate-y-2 group cursor-default">
+                    <div className="relative bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 hover:shadow-[0_30px_60px_rgba(14,165,233,0.15)] transition-all duration-500 hover:-translate-y-2 hover:z-10 group cursor-default">
                         <div className="w-16 h-16 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-600 mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-500 shadow-md">
                             <Radar size={32} />
                         </div>
@@ -132,7 +132,7 @@ export const SkyPage: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 hover:shadow-[0_30px_60px_rgba(239,68,68,0.15)] transition-all duration-500 hover:-translate-y-2 group cursor-default">
+                    <div className="relative bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 hover:shadow-[0_30px_60px_rgba(239,68,68,0.15)] transition-all duration-500 hover:-translate-y-2 hover:z-10 group cursor-default">
                         <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors duration-500 shadow-md">
                             <Flame size={32} />
                         </div>
@@ -200,7 +200,7 @@ export const SkyPage: React.FC = () => {
 
                 {/* Cinematic Stats */}
                 <div className="mb-24">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative">
                         <BigStat val="34" label="B-52 BỊ HẠ" sub="Theo số liệu Việt Nam" highlight />
                         <BigStat val="81" label="TỔNG MÁY BAY" sub="Mỹ bị bắn rơi" />
                         <BigStat val="1.6k" label="DÂN THƯỜNG" sub="Thiệt mạng do bom đạn" />
@@ -236,8 +236,9 @@ export const SkyPage: React.FC = () => {
     );
 };
 
+
 const BigStat = ({ val, label, sub, highlight }: any) => (
-    <div className={`p-8 rounded-3xl flex flex-col items-center justify-center text-center transition-all duration-500 hover:-translate-y-2 cursor-default ${highlight ? 'bg-red-600 text-white shadow-2xl shadow-red-600/30' : 'bg-white text-slate-800 border border-slate-100 hover:shadow-xl hover:shadow-slate-200'}`}>
+    <div className={`relative p-8 rounded-3xl flex flex-col items-center justify-center text-center transition-all duration-500 hover:-translate-y-2 hover:z-10 cursor-pointer active:scale-[0.98] ${highlight ? 'bg-red-600 text-white shadow-2xl shadow-red-600/30' : 'bg-white text-slate-800 border border-slate-100 hover:shadow-xl hover:shadow-slate-200'}`}>
         <span className={`text-5xl md:text-6xl font-bold font-serif mb-2 ${highlight ? 'text-white' : 'text-slate-900'}`}>{val}</span>
         <span className={`text-xs font-bold tracking-widest uppercase mb-2 ${highlight ? 'text-red-100' : 'text-slate-400'}`}>{label}</span>
         <p className={`text-xs ${highlight ? 'text-red-100' : 'text-slate-500'}`}>{sub}</p>

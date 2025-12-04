@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Layers, MapPin, ArrowDown, Plane } from 'lucide-react';
+import { Map, Route, Plane, Layers } from 'lucide-react';
 
 type Layer = 'underground' | 'ground' | 'air';
 
 interface MapLocation {
     name: string;
     description: string;
-    x: number; // percentage from left
-    y: number; // percentage from top
-    layer: Layer;
+    layer: 'underground' | 'ground' | 'air';
+    x: number;
+    y: number;
+    icon: React.ReactNode;
 }
 
 interface InteractiveMapProps {
@@ -16,39 +17,89 @@ interface InteractiveMapProps {
 }
 
 export const InteractiveMap: React.FC<InteractiveMapProps> = ({ className = '' }) => {
-    const [activeLayer, setActiveLayer] = useState<Layer>('ground');
+    const [activeLayer, setActiveLayer] = useState<'underground' | 'ground' | 'air'>('ground');
     const [hoveredLocation, setHoveredLocation] = useState<MapLocation | null>(null);
 
+    // Historical locations for 1971-1973 Vietnam War Map
     const locations: MapLocation[] = [
-        // Underground
-        { name: 'Địa Đạo Củ Chi', description: '250km hệ thống ngầm 3 tầng', x: 35, y: 75, layer: 'underground' },
-        { name: 'Địa Đạo Vĩnh Mốc', description: 'Hầm ngầm ven biển DMZ', x: 50, y: 40, layer: 'underground' },
+        // ========== UNDERGROUND (2 markers) ==========
+        {
+            name: 'Địa Đạo Củ Chi',
+            description: 'Hệ thống địa đạo 250km phía Tây Sài Gòn',
+            layer: 'underground',
+            x: 49,  // TRONG VN - Tây Sài Gòn
+            y: 88,  // Cực Nam
+            icon: <Map size={20} className="text-white" />
+        },
+        {
+            name: 'Địa Đạo Vĩnh Mốc',
+            description: 'Địa đạo ven biển DMZ',
+            layer: 'underground',
+            x: 58,  // Ven biển DMZ
+            y: 43,  // Vùng DMZ
+            icon: <Map size={20} className="text-white" />
+        },
 
-        // Ground
-        { name: 'Đường Trường Sơn', description: '20.000km mạng lưới xuyên rừng', x: 60, y: 50, layer: 'ground' },
-        { name: 'Đường Hồ Chí Minh', description: 'Trục vận tải chính Bắc - Nam', x: 55, y: 35, layer: 'ground' },
-        { name: 'Đường 9 - Khe Sanh', description: 'Cửa ngõ chiến lược', x: 52, y: 42, layer: 'ground' },
+        // ========== GROUND - HO CHI MINH TRAIL (4 markers dọc biên Lào) ==========
+        {
+            name: 'Đường Trường Sơn (Bắc)',
+            description: 'Đoạn Bắc - trong VN ven biên Lào',
+            layer: 'ground',
+            x: 50,  // Dọc biên Lào trong VN
+            y: 28,  // Miền Bắc
+            icon: <Route size={20} className="text-white" />
+        },
+        {
+            name: 'Đường Trường Sơn (Trung-Bắc)',
+            description: 'Đoạn Trung-Bắc trong VN',
+            layer: 'ground',
+            x: 53,  // Dọc trail trong VN
+            y: 36,  // Miền Trung-Bắc
+            icon: <Route size={20} className="text-white" />
+        },
+        {
+            name: 'Đường 9 - Khe Sanh',
+            description: 'Vùng Quảng Trị trong VN',
+            layer: 'ground',
+            x: 58,  // Quảng Trị trong VN
+            y: 46,  // Miền Trung gần DMZ
+            icon: <Route size={20} className="text-white" />
+        },
+        {
+            name: 'Đường Trường Sơn (Nam)',
+            description: 'Đoạn Nam - Tây Nguyên VN',
+            layer: 'ground',
+            x: 64,  // Tây Nguyên trong VN
+            y: 67,  // Khu vực Tây Nguyên
+            icon: <Route size={20} className="text-white" />
+        },
 
-        // Air
-        { name: 'Hà Nội', description: 'Điện Biên Phủ trên không 1972', x: 48, y: 25, layer: 'air' },
-        { name: 'Hải Phòng', description: 'Cảng biển quan trọng', x: 52, y: 27, layer: 'air' },
+        // ========== AIR - MIỀN BẮC (3 markers tập trung) ==========
+        {
+            name: 'Hà Nội',
+            description: 'Thủ đô - mục tiêu Linebacker II',
+            layer: 'air',
+            x: 54,  // Đồng bằng Bắc Bộ đúng vị trí HN
+            y: 18,  // Miền Bắc
+            icon: <Plane size={20} className="text-white" />
+        },
+        {
+            name: 'Hải Phòng',
+            description: 'Cảng biển chiến lược miền Bắc',
+            layer: 'air',
+            x: 55,  // Ven biển Đông gần HN
+            y: 22,  // Gần Hà Nội
+            icon: <Plane size={20} className="text-white" />
+        },
+        {
+            name: 'Đồng Hới',
+            description: 'Miền Trung - Bắc DMZ',
+            layer: 'air',
+            x: 53,  // Ven biển miền Trung
+            y: 38,  // Bắc DMZ
+            icon: <Plane size={20} className="text-white" />
+        },
     ];
-
-    const getLayerColor = (layer: Layer) => {
-        switch (layer) {
-            case 'underground': return 'bg-underground text-white border-underground-light';
-            case 'ground': return 'bg-ground text-white border-ground-light';
-            case 'air': return 'bg-air text-white border-air-light';
-        }
-    };
-
-    const getLayerIcon = (layer: Layer) => {
-        switch (layer) {
-            case 'underground': return <ArrowDown size={20} />;
-            case 'ground': return <MapPin size={20} />;
-            case 'air': return <Plane size={20} />;
-        }
-    };
 
     const visibleLocations = locations.filter(loc => loc.layer === activeLayer);
 
@@ -63,7 +114,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ className = '' }
                         : 'bg-white text-underground border-2 border-underground-light hover:bg-underground-light hover:text-white'
                         }`}
                 >
-                    <ArrowDown size={18} />
+                    <Map size={18} />
                     Dưới Đất
                 </button>
                 <button
@@ -73,7 +124,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ className = '' }
                         : 'bg-white text-ground border-2 border-ground-light hover:bg-ground-light hover:text-white'
                         }`}
                 >
-                    <MapPin size={18} />
+                    <Route size={18} />
                     Mặt Đất
                 </button>
                 <button
@@ -90,12 +141,12 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ className = '' }
 
             {/* Map Container */}
             <div className="relative bg-gradient-to-br from-stone-100 to-stone-200 rounded-3xl overflow-hidden shadow-2xl border border-stone-300">
-                {/* Vietnam Map SVG Background */}
+                {/* Vietnam Map Background */}
                 <div className="relative w-full aspect-[3/4] md:aspect-[4/3]">
                     <img
-                        src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Vietnam_war_1971-1973_map_es.svg/960px-Vietnam_war_1971-1973_map_es.svg.png"
                         alt="Bản đồ Việt Nam"
-                        className={`w-full h-full object-cover transition-all duration-500 ${activeLayer === 'underground' ? 'opacity-40 sepia' :
+                        className={`w-full h-full object-contain transition-all duration-500 ${activeLayer === 'underground' ? 'opacity-40 sepia' :
                             activeLayer === 'ground' ? 'opacity-50' :
                                 'opacity-30 saturate-150'
                             }`}
@@ -108,38 +159,42 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ className = '' }
                         }`} />
 
                     {/* Location Markers */}
-                    {visibleLocations.map((location, index) => (
-                        <div
-                            key={index}
-                            className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
-                            style={{ left: `${location.x}%`, top: `${location.y}%` }}
-                            onMouseEnter={() => setHoveredLocation(location)}
-                            onMouseLeave={() => setHoveredLocation(null)}
-                        >
-                            {/* Pulse Effect */}
-                            <div className={`absolute inset-0 w-12 h-12 -translate-x-1/2 -translate-y-1/2 rounded-full animate-ping ${activeLayer === 'underground' ? 'bg-underground' :
-                                activeLayer === 'ground' ? 'bg-ground' :
-                                    'bg-air'
-                                } opacity-75`} />
-
-                            {/* Marker */}
-                            <div className={`relative w-12 h-12 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-all duration-300 group-hover:scale-125 ${getLayerColor(location.layer)}`}>
-                                {getLayerIcon(location.layer)}
-                            </div>
-
-                            {/* Tooltip */}
-                            {hoveredLocation === location && (
-                                <div className="absolute top-16 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
-                                    <div className="bg-white px-4 py-3 rounded-xl shadow-2xl border-2 border-stone-200 min-w-[200px]">
-                                        <h4 className="font-bold text-stone-900 mb-1">{location.name}</h4>
-                                        <p className="text-xs text-stone-600">{location.description}</p>
+                    <div className="absolute inset-0">
+                        {visibleLocations
+                            .map((loc, idx) => (
+                                <div
+                                    key={idx}
+                                    className="absolute group"
+                                    style={{
+                                        left: `${loc.x}%`,
+                                        top: `${loc.y}%`,
+                                        transform: 'translate(-50%, -50%)'
+                                    }}
+                                >
+                                    {/* Marker Pin */}
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-2xl cursor-pointer transition-all duration-300 hover:scale-125 ${activeLayer === 'underground' ? 'bg-underground border-4 border-amber-900' :
+                                        activeLayer === 'ground' ? 'bg-ground border-4 border-emerald-900' :
+                                            'bg-air border-4 border-sky-900'
+                                        }`}>
+                                        {loc.icon}
                                     </div>
-                                    {/* Arrow */}
-                                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white" />
+
+                                    {/* Tooltip */}
+                                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                                        <div className="bg-stone-900/95 backdrop-blur text-white text-xs font-bold px-3 py-2 rounded-lg shadow-xl">
+                                            {loc.name}
+                                        </div>
+                                        <div className="w-2 h-2 bg-stone-900/95 rotate-45 absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                                    </div>
+
+                                    {/* Pulse Animation */}
+                                    <div className={`absolute inset-0 rounded-full animate-ping opacity-20 ${activeLayer === 'underground' ? 'bg-amber-500' :
+                                        activeLayer === 'ground' ? 'bg-emerald-500' :
+                                            'bg-sky-500'
+                                        }`}></div>
                                 </div>
-                            )}
-                        </div>
-                    ))}
+                            ))}
+                    </div>
                 </div>
 
                 {/* Legend */}

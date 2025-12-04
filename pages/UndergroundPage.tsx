@@ -223,8 +223,8 @@ const StatRow = ({ label, value, unit }: any) => (
 );
 
 const FeatureBox = ({ icon, title, desc }: any) => (
-    <div className="bg-stone-900 p-5 rounded-xl border border-stone-800 hover:border-amber-900/50 transition-all hover:-translate-y-1 group">
-        <div className="text-amber-600 mb-3 group-hover:scale-110 transition-transform origin-left">{icon}</div>
+    <div className="relative bg-stone-900 p-5 rounded-xl border border-stone-800 hover:border-amber-900/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:z-10 cursor-pointer active:scale-[0.98] group">
+        <div className="text-amber-600 mb-3 group-hover:scale-110 transition-transform duration-500 origin-left">{icon}</div>
         <h4 className="text-white font-bold mb-1">{title}</h4>
         <p className="text-stone-500 text-sm leading-relaxed">{desc}</p>
     </div>

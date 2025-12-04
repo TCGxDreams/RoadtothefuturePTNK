@@ -25,8 +25,8 @@ export const GroundPage: React.FC = () => {
 
             <div className="container mx-auto px-4 py-12 -mt-16">
 
-                {/* Key Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 relative z-10">
+                {/* Key Stats */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 relative">
                     <StatCard icon={<MapPin />} value="16-20k" unit="km" label="Tổng chiều dài mạng lưới" />
                     <StatCard icon={<User />} value="2" unit="Triệu" label="Lượt binh sĩ hành quân" />
                     <StatCard icon={<Truck />} value="1" unit="Triệu" label="Tấn vật tư vận chuyển" />
@@ -93,41 +93,53 @@ export const GroundPage: React.FC = () => {
                                 <h3 className="text-xl font-bold text-slate-800 font-serif">Quá Khứ & Hiện Tại</h3>
                             </div>
                             <div className="p-4 flex-grow bg-stone-50">
-                                <ComparisonSlider />
+                                <ComparisonSlider
+                                    beforeImage="https://special.vietnamplus.vn/wp-content/uploads/2021/03/1-1558226613-100-1568x758.jpg"
+                                    afterImage="https://static.tuoitre.vn/tto/i/s626/2009/05/17/NyTrzBX8.jpg"
+                                    beforeLabel="Đường mòn Trường Sơn"
+                                    afterLabel="Đường Trường Sơn 2009"
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Timeline Section */}
-                <div className="mb-24 px-4">
-                    <h3 className="text-center text-2xl font-serif font-bold text-emerald-900 mb-12">Giai Đoạn Phát Triển (1959-1975)</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-6 left-0 w-full h-1 bg-emerald-200 -z-10"></div>
 
-                        <TimelineItem
-                            year="1959-1960"
-                            title="Khởi Nguyên"
-                            desc="Đường mòn nhỏ hẹp, chỉ đi bộ gùi hàng. Phương châm 'Đi không dấu'."
-                        />
-                        <TimelineItem
-                            year="1960-1965"
-                            title="Cơ Giới Hóa Sơ Khai"
-                            desc="Mở rộng cho xe đạp thồ (Peugeot cải tiến) chở 227kg và xe thô sơ."
-                        />
-                        <TimelineItem
-                            year="1965-1970"
-                            title="Đường Xe Tải"
-                            desc="Phát triển đường ô tô dã chiến. Đối mặt chiến tranh phá hoại ác liệt."
-                        />
-                        <TimelineItem
-                            year="1970-1975"
-                            title="Hoàn Thiện"
-                            desc="Đường nhựa 4 làn xe, hệ thống đường ống xăng dầu và thông tin liên lạc."
-                            isLast
-                        />
-                    </div>
+                {/* Timeline Section */}
+                <div className="mb-24">
+                    <h3 className="text-center text-3xl font-serif font-bold text-emerald-900 mb-4">Giai Đoạn Phát Triển</h3>
+                    <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
+                        Hành trình từ đường mòn nhỏ hẹp đến hệ thống giao thông đa chức năng (1959-1975)
+                    </p>
+
+                    <Timeline
+                        events={[
+                            {
+                                year: '1959-1960',
+                                title: 'Khởi Nguyên',
+                                description: 'Đường mòn nhỏ hẹp, chỉ đi bộ gùi hàng. Phương châm "Đi không dấu".',
+                                color: 'bg-emerald-500'
+                            },
+                            {
+                                year: '1960-1965',
+                                title: 'Cơ Giới Hóa Sơ Khai',
+                                description: 'Mở rộng cho xe đạp thồ (Peugeot cải tiến) chở 227kg và xe thô sơ.',
+                                color: 'bg-emerald-600'
+                            },
+                            {
+                                year: '1965-1970',
+                                title: 'Đường Xe Tải',
+                                description: 'Phát triển đường ô tô dã chiến. Đối mặt chiến tranh phá hoại ác liệt.',
+                                color: 'bg-emerald-700'
+                            },
+                            {
+                                year: '1970-1975',
+                                title: 'Hoàn Thiện',
+                                description: 'Đường nhựa 4 làn xe, hệ thống đường ống xăng dầu và thông tin liên lạc.',
+                                color: 'bg-emerald-800'
+                            }
+                        ]}
+                    />
                 </div>
 
                 {/* Audio/Cultural Section */}
@@ -185,21 +197,13 @@ export const GroundPage: React.FC = () => {
 };
 
 const StatCard = ({ icon, value, unit, label }: any) => (
-    <div className="bg-white p-6 rounded-2xl shadow-lg border border-emerald-50 hover:-translate-y-1 transition-transform group">
-        <div className="text-emerald-600 mb-3 group-hover:scale-110 transition-transform origin-left">{icon}</div>
+    <div className="relative bg-white p-6 rounded-2xl shadow-lg border border-emerald-50 hover:-translate-y-2 hover:z-10 hover:shadow-2xl transition-all duration-500 cursor-pointer active:scale-[0.98] group">
+        <div className="text-emerald-600 mb-3 group-hover:scale-110 transition-transform duration-500 origin-left">{icon}</div>
         <div className="text-2xl md:text-3xl font-bold text-slate-800">{value} <span className="text-sm font-normal text-slate-500">{unit}</span></div>
         <div className="text-xs text-slate-500 font-medium uppercase mt-1">{label}</div>
     </div>
 );
 
-const TimelineItem = ({ year, title, desc, isLast }: any) => (
-    <div className="bg-white p-6 rounded-2xl shadow-md border border-emerald-50 relative group hover:-translate-y-2 transition-transform duration-300">
-        <div className="w-4 h-4 bg-emerald-500 rounded-full border-4 border-white shadow-sm absolute -top-2 left-1/2 -translate-x-1/2 z-10 hidden md:block"></div>
-        <span className="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full mb-3">{year}</span>
-        <h4 className="text-lg font-bold text-emerald-900 mb-2">{title}</h4>
-        <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
-    </div>
-);
 
 const SongItem = ({ title, artist, duration, youtubeUrl }: any) => (
     <a
