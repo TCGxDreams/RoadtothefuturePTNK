@@ -159,25 +159,25 @@ export const GroundPage: React.FC = () => {
                                     title="Cô Gái Mở Đường"
                                     artist="Nhạc sĩ: Xuân Giao"
                                     duration="03:45"
-                                    youtubeUrl="https://www.youtube.com/watch?v=YhG0YQWvIK8"
+                                    youtubeUrl="https://youtu.be/q2evcToj9yQ?si=sUqzp1jMSTp4JLmd"
                                 />
                                 <SongItem
                                     title="Trường Sơn Đông, Trường Sơn Tây"
                                     artist="Thơ: Phạm Tiến Duật"
                                     duration="04:12"
-                                    youtubeUrl="https://www.youtube.com/watch?v=5vBGOrI6yBk"
+                                    youtubeUrl="https://youtu.be/g7okMFk7VYQ?si=RsUUn_NwkyFTgJJR"
                                 />
                                 <SongItem
                                     title="Bài Ca Bên Cánh Võng"
                                     artist="Nhạc sĩ: Nguyên Nhung"
                                     duration="03:20"
-                                    youtubeUrl="https://www.youtube.com/watch?v=nH7gHqD4XAM"
+                                    youtubeUrl="https://youtu.be/xHZEyyRlo30?si=zEo0yprzAf7tbsG6"
                                 />
                                 <SongItem
                                     title="Tiểu Đội Xe Không Kính"
                                     artist="Thơ: Phạm Tiến Duật"
                                     duration="03:55"
-                                    youtubeUrl="https://www.youtube.com/watch?v=VNjW4FYdlrA"
+                                    youtubeUrl="https://youtu.be/h8EKX6i2qrY?si=hLAh53T-S6apZqWX"
                                 />
                             </div>
                         </div>
