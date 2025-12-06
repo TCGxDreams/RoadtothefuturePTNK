@@ -7,6 +7,8 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-3178C6?logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?logo=vite)
 
+![Road to the Future Homepage](public/images/home-screenshot.png)
+
 ---
 
 ## 📖 Giới Thiệu
