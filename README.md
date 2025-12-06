@@ -38,10 +38,13 @@ Và sự chuyển hóa sang **tương lai hòa bình**: Metro, cao tốc, đư�
 - ✅ **CounterAnimation**: Animated statistics counters
 - ✅ **ComparisonSlider**: Before/After image slider
 - ✅ **HistorianChat**: AI chatbot sử dụng Gemini API
+- ✅ **VisionDetailModal**: Modal chi tiết về tương lai với AI insights
+- ✅ **YouTubeModal**: Video player integration
 
-### 📊 Nội Dung
+### 📊 Nội Dung & Cộng Đồng
 - ✅ Dữ liệu lịch sử chi tiết với số liệu chính xác
 - ✅ Hình ảnh lịch sử từ Wikimedia & Unsplash
+- ✅ **Community Stories**: Chia sẻ câu chuyện qua Discord Webhook
 - ✅ SEO optimization cho tiếng Việt
 - ✅ Open Graph tags cho social sharing
 
@@ -86,6 +89,7 @@ npm install
 Tạo file `.env` ở root directory:
 ```env
 VITE_API_KEY=your_gemini_api_key_here
+VITE_DISCORD_WEBHOOK_URL=your_discord_webhook_url
 ```
 
 > 💡 **Lấy API key**: https://ai.google.dev/
@@ -120,7 +124,9 @@ roadtothefuture/
 │   ├── HistorianChat.tsx
 │   ├── InteractiveMap.tsx
 │   ├── Navigation.tsx
-│   └── Timeline.tsx
+│   ├── Timeline.tsx
+│   ├── VisionDetailModal.tsx
+│   └── YouTubeModal.tsx
 ├── pages/               # Page components
 │   ├── HomePage.tsx
 │   ├── UndergroundPage.tsx
@@ -128,7 +134,11 @@ roadtothefuture/
 │   ├── SkyPage.tsx
 │   └── FuturePage.tsx
 ├── services/            # API services
+│   ├── discordService.ts
 │   └── geminiService.ts
+├── public/              # Static assets
+│   ├── content/
+│   └── images/
 ├── App.tsx              # Main app component
 ├── index.html           # HTML entry + Tailwind config
 ├── index.css            # Global styles & utilities
