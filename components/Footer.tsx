@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ setPage }) => {
           </div>
         </div>
         <div className="text-center pt-8 border-t border-slate-800 text-xs">
-          <p>&copy; 2025 Những Con Đường Vô Hình. Designed by Group 3 with Antigravity, React & Tailwind.</p>
+          <p>&copy; 2025 Những Con Đường Vô Hình. Designed by Group 3 from VNUHCM, High school for the gifted with Antigravity, React & Tailwind.</p>
         </div>
       </div>
     </footer>
