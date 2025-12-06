@@ -18,7 +18,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
                     <img
                         src="https://mod.gov.vn/wcm/connect/045ee540-bcaf-4aca-bfd3-ea7712c0f024/1/1.jpg?MOD=AJPERES"
                         className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
-                        alt="Vietnam War Memorial"
+                        alt="The resistance war against the US to save the country Memorial"
                     />
                 </div>
 
@@ -150,7 +150,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
                 <div className="flex gap-12 animate-[shimmer_30s_linear_infinite] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity">
                     {[
                         "Chiến dịch Hồ Chí Minh", "Đường 9 - Khe Sanh (1968)", "Tổng tiến công Mậu Thân (1968)",
-                        "Biệt động Sài Gòn", "Linebacker II (12 Ngày Đêm)", "Chiến dịch Sấm Rền", "Đường Hồ Chí Minh trên biển"
+                        "Biệt động Sài Gòn", "Trận Thành cổ Quảng Trị, 81 ngày đêm 1972", "Chiến dịch Xuân – Hè 1972", "Điện Biên Phủ trên không"
                     ].map((camp, i) => (
                         <div key={i} className="flex items-center gap-3">
                             <Star size={12} className="text-amber-500" fill="currentColor" />
@@ -159,7 +159,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
                     ))}
                     {[
                         "Chiến dịch Hồ Chí Minh", "Đường 9 - Khe Sanh (1968)", "Tổng tiến công Mậu Thân (1968)",
-                        "Biệt động Sài Gòn", "Linebacker II (12 Ngày Đêm)", "Chiến dịch Sấm Rền", "Đường Hồ Chí Minh trên biển"
+                        "Biệt động Sài Gòn", "Trận Thành cổ Quảng Trị, 81 ngày đêm 1972", "Chiến dịch Xuân – Hè 1972", "Điện Biên Phủ trên không"
                     ].map((camp, i) => (
                         <div key={`dup-${i}`} className="flex items-center gap-3">
                             <Star size={12} className="text-amber-500" fill="currentColor" />
@@ -180,7 +180,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
                         <div className="hidden md:block text-right">
                             <p className="text-sm font-bold text-stone-400 uppercase tracking-widest flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                                Select a Chapter
+                                Chọn chủ đề
                             </p>
                         </div>
                     </div>
