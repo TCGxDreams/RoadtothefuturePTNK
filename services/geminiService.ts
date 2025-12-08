@@ -54,7 +54,7 @@ export const sendMessageToHistorian = async (message: string, contextPage: PageI
 
   try {
     const result = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       contents: fullPrompt
     });
 
@@ -150,7 +150,7 @@ Văn phong: Trang trọng, đầy cảm xúc. Đối比 rõ nét giữa quá kh�
 
   try {
     const result = await ai.models.generateContent({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       contents: fullInstruction
     });
 
