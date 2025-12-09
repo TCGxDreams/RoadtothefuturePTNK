@@ -97,9 +97,9 @@ export const VisionDetailModal: React.FC<VisionDetailModalProps> = ({
                         alt={title}
                         className="w-full h-full object-cover"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${currentColor.bg} opacity-90`} />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${currentColor.bg} opacity-60 backdrop-blur-md`} />
 
-                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <div className="absolute bottom-0 left-0 right-0 p-8 text-white drop-shadow-md">
                         <div className="flex items-center gap-4 mb-4">
                             <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center">
                                 {icon}
