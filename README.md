@@ -11,46 +11,46 @@
 
 ---
 
-## 📖 Giới Thiệu
+## Giới Thiệu
 
 Website kể câu chuyện về **3 mặt trận chiến lược** trong lịch sử Việt Nam:
 
-- 🕳️ **Dưới Đất**: Địa đạo Củ Chi - mạng lưới ngầm 200-250km
-- 🌲 **Mặt Đất**: Đường Trường Sơn - huyết mạch 16,000-20,000km
-- ✈️ **Trên Không**: Điện Biên Phủ trên không - 12 ngày đêm lịch sử
+- **Dưới Đất**: Địa đạo Củ Chi - mạng lưới ngầm 200-250km
+- **Mặt Đất**: Đường Trường Sơn - huyết mạch 16,000-20,000km
+- **Trên Không**: Điện Biên Phủ trên không - 12 ngày đêm lịch sử
 
 Và sự chuyển hóa sang **tương lai hòa bình**: Metro, cao tốc, đường bay quốc tế.
 
 ---
 
-## ✨ Tính Năng Chính
+## Tính Năng Chính
 
-### 🎨 Thiết Kế & UX
-- ✅ Modern, responsive design với TailwindCSS
-- ✅ Custom color themes cho từng tầng (underground/ground/air/future)
-- ✅ Smooth animations & transitions
-- ✅ Glassmorphism effects
-- ✅ Vietnamese typography (Crimson Text, Libre Baskerville, Inter)
+### Thiết Kế & UX
+- Modern, responsive design với TailwindCSS
+- Custom color themes cho từng tầng (underground/ground/air/future)
+- Smooth animations & transitions
+- Glassmorphism effects
+- Vietnamese typography (Crimson Text, Libre Baskerville, Inter)
 
-### 🗺️ Interactive Components
-- ✅ **InteractiveMap**: Bản đồ 3 lớp với layer toggle
-- ✅ **Timeline**: Horizontal scrolling timeline
-- ✅ **CounterAnimation**: Animated statistics counters
-- ✅ **ComparisonSlider**: Before/After image slider
-- ✅ **HistorianChat**: AI chatbot sử dụng Gemini API
-- ✅ **VisionDetailModal**: Modal chi tiết về tương lai với AI insights
-- ✅ **YouTubeModal**: Video player integration
+### Interactive Components
+- **InteractiveMap**: Bản đồ 3 lớp với layer toggle
+- **Timeline**: Horizontal scrolling timeline
+- **CounterAnimation**: Animated statistics counters
+- **ComparisonSlider**: Before/After image slider
+- **HistorianChat**: AI chatbot sử dụng Gemini API
+- **VisionDetailModal**: Modal chi tiết về tương lai với AI insights
+- **YouTubeModal**: Video player integration
 
-### 📊 Nội Dung & Cộng Đồng
-- ✅ Dữ liệu lịch sử chi tiết với số liệu chính xác
-- ✅ Hình ảnh lịch sử từ Wikimedia & Unsplash
-- ✅ **Community Stories**: Chia sẻ câu chuyện qua Discord Webhook
-- ✅ SEO optimization cho tiếng Việt
-- ✅ Open Graph tags cho social sharing
+### Nội Dung & Cộng Đồng
+- Dữ liệu lịch sử chi tiết với số liệu chính xác
+- Hình ảnh lịch sử từ Wikimedia & Unsplash
+- **Community Stories**: Chia sẻ câu chuyện qua Discord Webhook
+- SEO optimization cho tiếng Việt
+- Open Graph tags cho social sharing
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React** 19.0.2 - UI library
@@ -69,7 +69,7 @@ Và sự chuyển hóa sang **tương lai hòa bình**: Metro, cao tốc, đư�
 
 ---
 
-## 🚀 Cài Đặt & Chạy
+## Cài Đặt & Chạy
 
 ### Prerequisites
 - Node.js >= 18.x
@@ -92,7 +92,7 @@ VITE_API_KEY=your_gemini_api_key_here
 VITE_DISCORD_WEBHOOK_URL=your_discord_webhook_url
 ```
 
-> 💡 **Lấy API key**: https://ai.google.dev/
+> **Lấy API key**: https://ai.google.dev/
 
 ### 3. Development
 ```bash
@@ -113,7 +113,7 @@ npm run preview
 
 ---
 
-## 📁 Cấu Trúc Project
+## Cấu Trúc Project
 
 ```
 roadtothefuture/
@@ -149,7 +149,7 @@ roadtothefuture/
 
 ---
 
-## 🎨 Color Palette
+## Color Palette
 
 | Layer | Primary | Accent | Usage |
 |-------|---------|--------|-------|
@@ -160,7 +160,7 @@ roadtothefuture/
 
 ---
 
-## 🌐 Deploy
+## Deploy
 
 ### Option 1: Vercel (Khuyến nghị)
 ```bash
@@ -194,7 +194,7 @@ npm run deploy
 
 ---
 
-## 🔧 Customization
+## Customization
 
 ### Thêm trang mới
 1. Tạo component trong `pages/`
@@ -211,7 +211,7 @@ npm run deploy
 
 ---
 
-## 📊 Statistics
+## Statistics
 
 ### Dữ Liệu Lịch Sử
 - **Địa Đạo Củ Chi**: 200-250km, 3 tầng, 4,200+ trận đánh
@@ -225,9 +225,9 @@ npm run deploy
 
 ---
 
-## 🤖 AI Chatbot
+## AI Chatbot
 
-Website tích hợp **Giáo sư Sử Học AI** sử dụng Google Gemini 2.0:
+Website tích hợp **Giáo sư Sử Học AI** sử dụng Google Gemini 2.5:
 
 **Features:**
 - Context-aware responses dựa trên trang hiện tại
@@ -241,29 +241,30 @@ Website tích hợp **Giáo sư Sử Học AI** sử dụng Google Gemini 2.0:
 
 ---
 
-## 📝 License
+## License
 
 MIT License - Free to use for educational purposes.
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Developed with ❤️ for preserving Vietnamese history.
 
 **Contact:**
-- GitHub: [Your GitHub]
-- Email: [Your Email]
+- GitHub: [TCGxDreams](https://github.com/TCGxDreams)
+- Email: [student232433@ptnk.edu.vn]
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 **Data Sources:**
 - hapham.dev
 - oxalisadventure.com
 - nhandan.vn
 - Wikipedia
+- ....
 
 **Image Sources:**
 - Wikimedia Commons
@@ -277,7 +278,7 @@ Developed with ❤️ for preserving Vietnamese history.
 
 ---
 
-## 📚 Resources
+## Resources
 
 - [Vite Documentation](https://vitejs.dev/)
 - [React Documentation](https://react.dev/)
