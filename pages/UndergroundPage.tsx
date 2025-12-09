@@ -27,7 +27,7 @@ export const UndergroundPage: React.FC = () => {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400">Huyền Thoại</span>
                     </h1>
                     <p className="text-xl font-light text-stone-400 max-w-2xl mx-auto leading-relaxed">
-                        "Thành phố trong lòng đất" - 250km địa đạo kiên cường trước bom đạn B-52.
+                        "Thành phố trong lòng đất" - 250km địa đạo kiên cường trước bom đạn.
                     </p>
                 </div>
             </div>

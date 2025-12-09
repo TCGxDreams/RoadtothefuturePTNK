@@ -135,7 +135,7 @@ export const GroundPage: React.FC = () => {
                             {
                                 year: '1970-1975',
                                 title: 'Hoàn Thiện',
-                                description: 'Đường nhựa 4 làn xe, hệ thống đường ống xăng dầu và thông tin liên lạc.',
+                                description: 'Đường nhựa thô sơ, hệ thống đường ống xăng dầu và thông tin liên lạc.',
                                 color: 'bg-emerald-800'
                             }
                         ]}

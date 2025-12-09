@@ -164,6 +164,78 @@ export const FuturePage: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Tầm Nhìn Tương Lai Section */}
+                <div className="container mx-auto max-w-6xl mb-32">
+                    <div className="text-center mb-16">
+                        <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-full text-sm font-bold text-slate-700 mb-4">
+                            Tiếp Bước Con Đường
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Tầm Nhìn Tương Lai</h2>
+                        <p className="text-slate-600 max-w-2xl mx-auto">
+                            Gìn giữ hòa bình, phát huy trí tuệ và ý chí kiên cường là di sản tinh thần quý báu để tiếp tục sống và phát triển trong thế hệ hôm nay và mai sau.
+                        </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Vision 1: Smart City */}
+                        <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <div className="w-14 h-14 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                                <Train className="text-amber-600" size={28} />
+                            </div>
+                            <h3 className="text-xl font-serif font-bold text-slate-800 mb-3">Đô Thị Thông Minh</h3>
+                            <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                                Tinh thần sáng tạo đào hầm ngầm năm xưa giờ được áp dụng vào metro, quy hoạch đô thị xanh.Trong tương lai nó còn là những con đường xuyên biển, những khu đô thị lòng đất,... Tất cả những điều đó chính là sự kết hợp của sự kiên trì kế thừa từ "DNA" của quá khứ và tầm nhìn trí tuệ tiếp bước tương lai.
+                            </p>
+                            <div className="pt-4 border-t border-slate-100">
+                                <p className="text-xs text-amber-700 font-medium italic">
+                                    "Biến khó khăn thành động lực, từ đất đá cũng thành hình, hầm hào xây lên từ ý chí để tiếp bước tương lai thật hòa bình."
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Vision 2: Regional Connection */}
+                        <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <div className="w-14 h-14 bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mb-6">
+                                <Waypoints className="text-emerald-600" size={28} />
+                            </div>
+                            <h3 className="text-xl font-serif font-bold text-slate-800 mb-3">Mạng Lưới Kết Nối</h3>
+                            <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                                Ý chí mở đường Trường Sơn giờ thể hiện qua kết nối và đoàn kết toàn dân. Bây giờ ta có cao tốc Bắc-Nam, đường sắt cao tốc, quốc lộ.Nhưng nhiều nơi vẫn còn khó khăn để tiếp nối sứ mệnh "thống nhất" tương lai ta sẽ phát triển thêm nữa.
+                            </p>
+                            <div className="pt-4 border-t border-slate-100">
+                                <p className="text-xs text-emerald-700 font-medium italic">
+                                    "Con đường mang ý chí, khác vọng năm ấy mang đầy bom đạn. Giờ là cầu nối cho trăm nhà, trăm người, trăm ngã, là cầu nối đưa thương hiệu nội địa Việt Nam ra quốc tế"
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Vision 3: Global Integration */}
+                        <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                            <div className="w-14 h-14 bg-gradient-to-br from-sky-100 to-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                                <Plane className="text-sky-600" size={28} />
+                            </div>
+                            <h3 className="text-xl font-serif font-bold text-slate-800 mb-3">Kết Nối Bầu Trời Tổ Quốc và Toàn Cầu</h3>
+                            <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                                Bầu trời từng bảo vệ bằng lưới lửa phòng không đầy chắp và giờ đây đã thống nhất kết nối bao bầu trời tổ quốc mở cửa ngõ hội nhập, mở con đường tới tương lai. Tương lai từ những sân bay nội địa, quốc tế nó sẽ phát triển và đưa Việt Nam ta tới 5 châu với ngoại giao mềm và du lịch văn hóa chúng ta sẽ sánh vai với cường quốc năm châu như Bác Hồ đã nói.
+                            </p>
+                            <div className="pt-4 border-t border-slate-100">
+                                <p className="text-xs text-sky-700 font-medium italic">
+                                    "Bầu trời đâu còn sắc đỏ đầy tiếng bom rơi. Giờ là chim hót, cầu nối hoà bình."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Closing Message */}
+                    <div className="mt-16 text-center">
+                        <div className="inline-block bg-gradient-to-r from-amber-50 via-white to-cyan-50 px-8 py-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <p className="text-lg text-slate-700 font-medium">
+                                🕊️ <span className="font-serif italic">"Hòa bình không chỉ là hết có chiến tranh, mà còn là nối bước xây dựng một tương lai tốt đẹp hơn từ những con đường của quá khứ."</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Legacy Form Section */}
                 <div className="container mx-auto max-w-5xl">
                     <div className="relative bg-white/60 backdrop-blur-xl p-8 md:p-14 rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-white">
@@ -215,6 +287,7 @@ export const FuturePage: React.FC = () => {
                                                 <option value="dia-dao">Địa Đạo Củ Chi/Vĩnh Mốc</option>
                                                 <option value="truong-son">Đường Trường Sơn</option>
                                                 <option value="ha-noi">Điện Biên Phủ Trên Không</option>
+                                                <option value="khac">Câu chuyện về tương lai</option>
                                                 <option value="khac">Khác</option>
                                             </select>
                                         </div>

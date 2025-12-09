@@ -147,25 +147,29 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
 
             {/* Campaign Highlights Marquee */}
             <section className="bg-stone-900 border-b border-stone-800 py-6 overflow-hidden">
-                <div className="flex gap-12 animate-[shimmer_30s_linear_infinite] whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity">
-                    {[
-                        "Chiến dịch Hồ Chí Minh", "Đường 9 - Khe Sanh (1968)", "Tổng tiến công Mậu Thân (1968)",
-                        "Biệt động Sài Gòn", "Trận Thành cổ Quảng Trị, 81 ngày đêm 1972", "Chiến dịch Xuân – Hè 1972", "Điện Biên Phủ trên không"
-                    ].map((camp, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                            <Star size={12} className="text-amber-500" fill="currentColor" />
-                            <span className="text-stone-300 text-sm font-bold uppercase tracking-widest">{camp}</span>
-                        </div>
-                    ))}
-                    {[
-                        "Chiến dịch Hồ Chí Minh", "Đường 9 - Khe Sanh (1968)", "Tổng tiến công Mậu Thân (1968)",
-                        "Biệt động Sài Gòn", "Trận Thành cổ Quảng Trị, 81 ngày đêm 1972", "Chiến dịch Xuân – Hè 1972", "Điện Biên Phủ trên không"
-                    ].map((camp, i) => (
-                        <div key={`dup-${i}`} className="flex items-center gap-3">
-                            <Star size={12} className="text-amber-500" fill="currentColor" />
-                            <span className="text-stone-300 text-sm font-bold uppercase tracking-widest">{camp}</span>
-                        </div>
-                    ))}
+                <div className="marquee-container">
+                    <div className="marquee-content">
+                        {[
+                            "Chiến dịch Hồ Chí Minh", "Đường 9 - Khe Sanh (1968)", "Tổng tiến công Mậu Thân (1968)",
+                            "Biệt động Sài Gòn", "Trận Thành cổ Quảng Trị, 81 ngày đêm 1972", "Chiến dịch Xuân – Hè 1972", "Điện Biên Phủ trên không"
+                        ].map((camp, i) => (
+                            <div key={i} className="flex items-center gap-3 mx-6">
+                                <Star size={12} className="text-amber-500 flex-shrink-0" fill="currentColor" />
+                                <span className="text-stone-300 text-sm font-bold uppercase tracking-widest whitespace-nowrap">{camp}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="marquee-content" aria-hidden="true">
+                        {[
+                            "Chiến dịch Hồ Chí Minh", "Đường 9 - Khe Sanh (1968)", "Tổng tiến công Mậu Thân (1968)",
+                            "Biệt động Sài Gòn", "Trận Thành cổ Quảng Trị, 81 ngày đêm 1972", "Chiến dịch Xuân – Hè 1972", "Điện Biên Phủ trên không"
+                        ].map((camp, i) => (
+                            <div key={`dup-${i}`} className="flex items-center gap-3 mx-6">
+                                <Star size={12} className="text-amber-500 flex-shrink-0" fill="currentColor" />
+                                <span className="text-stone-300 text-sm font-bold uppercase tracking-widest whitespace-nowrap">{camp}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 

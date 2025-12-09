@@ -317,3 +317,39 @@ html {
     color: black;
   }
 }
+
+/* ================================
+   Infinite Marquee Animation
+   ================================ */
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  gap: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.marquee-container:hover {
+  opacity: 1;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee-scroll 45s linear infinite;
+}
