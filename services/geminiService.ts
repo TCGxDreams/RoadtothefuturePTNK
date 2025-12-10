@@ -284,7 +284,7 @@ Văn phong: Trang trọng, đầy cảm xúc. Sử dụng markdown **in đậm**
 
   try {
     const result = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.5-flash-lite',
       contents: fullInstruction
     });
 
@@ -375,7 +375,7 @@ TRẢ LỜI NGAY LẬP TỨC, KHÔNG DÀI DÒNG.`,
 
   try {
     const result = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.5-flash-lite',
       contents: fullInstruction
     });
 
