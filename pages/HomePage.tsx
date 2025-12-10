@@ -42,6 +42,8 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
                             <div className="border-l-4 border-amber-600 pl-6 py-2 mb-8 opacity-0 animate-[fade-up_1s_ease-out_0.4s_forwards] bg-black/20 backdrop-blur-sm rounded-r-xl max-w-2xl">
                                 <p className="text-lg md:text-xl font-serif italic text-stone-200 leading-relaxed">
                                     "Những con hầm như hổ gầm trong góc tối<br />
+                                    Mòn chân ta vững bước trên đường trường<br />
+                                    Đường chân không thét vang lời khẳng định<br />
                                     Kháng chiến thành rợp nắng khắp muôn phương"
                                 </p>
                             </div>

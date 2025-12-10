@@ -309,3 +309,79 @@ export const loadVisionContent = async (visionType: VisionType): Promise<string>
     return "Nội dung đang được cập nhật...";
   }
 };
+
+export type HistoricalImageId = 'cuchi-entrance' | 'cuchi-cross-section' | 'b52' | 'mig21' | 'sam2';
+
+export const generateHistoricalImageDetail = async (imageId: HistoricalImageId): Promise<string> => {
+  if (!apiKey) {
+    return "Hệ thống chưa được cấu hình API Key. Vui lòng kiểm tra lại môi trường.";
+  }
+
+  const imagePrompts: Record<HistoricalImageId, string> = {
+    'cuchi-entrance': `
+NGỮ CẢNH: Phân tích sâu về "Lối vào Địa đạo Củ Chi"
+MÔ TẢ HÌNH ẢNH: Một khung gỗ vuông vức nhỏ hẹp nằm ẩn mình dưới lớp lá khô ngụy trang. Một người lính đang chui xuống.
+
+YÊU CẦU: Hóa thân thành Giáo sư Sử học, viết **ngắn gọn, súc tích, đanh thép** (tối đa 3 đoạn ngắn):
+1.  **Nghệ thuật ngụy trang**: Khung gỗ mối chịu nước, cửa hẹp chỉ vừa người Việt, lính Mỹ to lớn không lọt.
+2.  **Chiến thuật**: "Thoắt ẩn thoắt hiện" - đánh xong biến mất vào lòng đất.
+3.  **Ý nghĩa**: Cửa tử của quân thù, cửa sinh của quân ta.
+TRẢ LỜI NGAY VÀO VẤN ĐỀ, KHÔNG DẪN DẮT DÀI DÒNG.`,
+
+    'cuchi-cross-section': `
+NGỮ CẢNH: Phân tích "Kết cấu 3 tầng Địa đạo Củ Chi"
+MÔ TẢ HÌNH ẢNH: Sơ đồ cắt ngang ba tầng địa đạo.
+
+YÊU CẦU: Hóa thân thành Giáo sư Sử học, phân tích **cực kỳ ngắn gọn** theo gạch đầu dòng:
+- **Tầng 1 (3m)**: Chống đạn pháo, xe tăng, có ổ chiến đấu.
+- **Tầng 2 (6m-8m)**: Bệnh viện, bếp Hoàng Cầm, nơi nghỉ ngơi.
+- **Tầng 3 (8-12m)**: Trú ẩn an toàn trước bom B-52.
+- **Thông hơi**: Ụ mối giả giấu lỗ thông hơi tài tình.
+KHÔNG VIẾT MỞ BÀI KẾT BÀI, CHỈ TẬP TRUNG SỐ LIỆU VÀ CÔNG NĂNG.`,
+
+    'b52': `
+NGỮ CẢNH: Phân tích "B-52 Stratofortress - Pháo đài bay"
+MÔ TẢ HÌNH ẢNH: Chiếc máy bay ném bom khổng lồ của Mỹ.
+
+YÊU CẦU: Hóa thân thành Giáo sư Sử học, viết **cô đọng, chấn động**:
+- **Sức mạnh**: Mang 30 tấn bom, bay cao 10km, được coi là "Bất khả xâm phạm".
+- **Tội ác**: Rải thảm hủy diệt phố Khâm Thiên, Bệnh viện Bạch Mai.
+- **Sụp đổ**: Đêm 18/12/1972, B-52 đầu tiên bị bắn rơi tại Phù Lỗ, xác rơi hữu Tiệp. Thần tượng sụp đổ.
+TRẢ LỜI NGẮN GỌN, MẠNH MẼ.`,
+
+    'mig21': `
+NGỮ CẢNH: Phân tích "Tiêm kích MiG-21 - Én bạc"
+MÔ TẢ HÌNH ẢNH: Máy bay chiến đấu gọn nhẹ, mũi nhọn.
+
+YÊU CẦU: Hóa thân thành Giáo sư Sử học, viết **ngắn gọn, hào hùng**:
+- **Đặc điểm**: Nhỏ, nhẹ, cơ động, leo cao nhanh. Khắc tinh của máy bay nặng nề.
+- **Chiến thuật**: Bay thấp tránh radar -> Vọt lên cao -> Phóng tên lửa -> Thoát ly.
+- **Kỳ tích**: Phạm Tuân lái MiG-21 tắt máy núp mây, bắn rơi B-52 đêm 27/12.
+KHÔNG DẪN DẮT, VÀO THẲNG CHIẾN CÔNG.`,
+
+    'sam2': `
+NGỮ CẢNH: Phân tích "Tên lửa S-75 Dvina (SAM-2) - Rồng lửa Thăng Long"
+MÔ TẢ HÌNH ẢNH: Quả tên lửa dài trên bệ phóng.
+
+YÊU CẦU: Hóa thân thành Giáo sư Sử học, viết **cực kỳ súc tích**:
+- **Vai trò**: Vũ khí duy nhất vươn tới tầm cao B-52 ("Vít cổ" pháo đài bay).
+- **Trí tuệ**: Bộ đội tên lửa "vạch nhiễu tìm thù", đánh cách đánh 3 điểm.
+- **Khoảnh khắc**: Rồng lửa vút lên, B-52 bốc cháy sáng rực bầu trời Hà Nội.
+TRẢ LỜI NGAY LẬP TỨC, KHÔNG DÀI DÒNG.`,
+  };
+
+  const prompt = imagePrompts[imageId];
+  const fullInstruction = `${BASE_SYSTEM_INSTRUCTION}\n\n${prompt}`;
+
+  try {
+    const result = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: fullInstruction
+    });
+
+    return result.text || "Đang cập nhật tư liệu lịch sử...";
+  } catch (error) {
+    console.error("Gemini API Error for Image Detail:", error);
+    return "Kết nối đến kho tàng lịch sử đang gián đoạn. Vui lòng thử lại sau.";
+  }
+};

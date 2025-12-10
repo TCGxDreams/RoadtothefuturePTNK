@@ -43,11 +43,9 @@ Những con số ấy không chỉ là thống kê – đó là những gia đì
 
 Một thời, máy bay **B-52, F-111,...** là biểu tượng của chiến tranh, khói lửa, chết chóc. Nhưng ngày nay, máy bay dân dụng **Airbus, Boeing, tàu bay chở khách** mang màu áo mới: màu của hòa bình, của đi lại, của tương lai.
 
-| **Quá khứ** | **Hiện tại** |
-|-------------|--------------|
-| B-52, F-111 ném bom | Airbus, Boeing chở khách |
-| Khói lửa, chết chóc | Hòa bình, kết nối |
-| Sợ hãi, chia cắt | Giao lưu, hội nhập |
+**Quá khứ** B-52, F-111,... ném bom, khói lửa, chết chóc, sợ hãi, chia cắt
+
+**Hiện tại** Airbus, Boeing chở khách, hòa bình, kết nối, giao lưu, hội nhập
 
 Bầu trời trước kia gieo rắc nỗi lo sợ, chia cắt, mất mát.Giờ là nơi để kết nối, để đi lại, để xây dựng lại đó là minh chứng rõ nét cho một Việt Nam đã vượt qua đau thương, đứng lên, hồi sinh và phát triển.
 
