@@ -27,9 +27,9 @@ export const Footer: React.FC<FooterProps> = ({ setPage }) => {
           <div>
             <h3 className="text-white font-serif font-bold text-lg mb-4">Liên Kết</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="https://sites.google.com/ptnk.edu.vn/roadtothefuture/" className="hover:text-white transition-colors">Về dự án</a></li>
+              <li><a href="https://sites.google.com/ptnk.edu.vn/roadtothefuture/trang-ch%E1%BB%A7" className="hover:text-white transition-colors">Về dự án</a></li>
               <li><a href="https://docs.google.com/document/d/1wGCcqIrdUDhBqJzw-_xcadYosIpoXdn_7rQgEIiNbys/edit?usp=sharing" className="hover:text-white transition-colors">Tài liệu tham khảo</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Đóng góp tư liệu</a></li>
+              <li><a href="https://drive.google.com/drive/folders/1-xlnayemaNgRhtgsq-m-L0YzbLDsq5vH?usp=share_link" className="hover:text-white transition-colors">Đóng góp tư liệu</a></li>
             </ul>
           </div>
         </div>
