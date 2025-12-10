@@ -37,8 +37,9 @@ Và sự chuyển hóa sang **tương lai hòa bình**: Metro, cao tốc, đư�
 - **Timeline**: Horizontal scrolling timeline
 - **CounterAnimation**: Animated statistics counters
 - **ComparisonSlider**: Before/After image slider
-- **HistorianChat**: AI chatbot sử dụng Gemini API
+- **HistorianChat**: AI chatbot sử dụng Gemini API (Gemini 2.5 Flash Lite)
 - **VisionDetailModal**: Modal chi tiết về tương lai với AI insights
+- **AIImageModal**: (Mới) Phân tích hình ảnh lịch sử bằng AI, tương tác trực tiếp
 - **YouTubeModal**: Video player integration
 
 ### Nội Dung & Cộng Đồng
@@ -118,6 +119,7 @@ npm run preview
 ```
 roadtothefuture/
 ├── components/           # React components
+│   ├── AIImageModal.tsx
 │   ├── ComparisonSlider.tsx
 │   ├── CounterAnimation.tsx
 │   ├── Footer.tsx
@@ -225,15 +227,16 @@ npm run deploy
 
 ---
 
-## AI Chatbot
+## AI Chatbot & Image Analysis
 
-Website tích hợp **Giáo sư Sử Học AI** sử dụng Google Gemini 2.5:
+Website tích hợp **Giáo sư Sử Học AI** sử dụng Google Gemini 2.5 Flash Lite:
 
 **Features:**
-- Context-aware responses dựa trên trang hiện tại
-- Suggested questions cho từng trang
+- **Chatbot**: Context-aware responses dựa trên trang hiện tại
+- **Image Analysis**: Tương tác với hình ảnh lịch sử (Underground/Sky pages) để nhận phân tích sâu sắc
+- **Smart Prompts**: Kịch bản trả lời ngắn gọn, súc tích, đậm chất lịch sử
+- **Language**: Tối ưu hóa cho tiếng Việt, giọng văn hào hùng
 - Markdown formatting với react-markdown
-- Vietnamese language optimization
 
 **Customization:**
 - System instructions: `services/geminiService.ts`
