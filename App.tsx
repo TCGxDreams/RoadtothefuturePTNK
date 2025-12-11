@@ -55,15 +55,17 @@ export default function App() {
       <IframeScaler />
       <Navigation activePage={activePage} setPage={setActivePage} />
 
-      <main className="flex-grow">
-        <div className="animate-fade-in w-full">
-          {renderPage()}
-        </div>
-      </main>
+      <div id="scalable-content" className="flex-grow flex flex-col origin-top-left">
+        <main className="flex-grow w-full">
+          <div className="animate-fade-in w-full">
+            {renderPage()}
+          </div>
+        </main>
+        <Footer setPage={setActivePage} />
+      </div>
 
       {/* Pass activePage to Chat for context awareness */}
       <HistorianChat currentPage={activePage} />
-      <Footer setPage={setActivePage} />
     </div>
   );
 }
