@@ -80,8 +80,8 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
                         Hòa Bình Đẹp Lắm
                     </h2>
                     <p className="text-xl md:text-2xl text-stone-600 leading-relaxed max-w-3xl mx-auto mb-8">
-                        Từ những con đường tối tăm trong chiến tranh - xuyên tỉnh, xuyên rừng, xuyên núi -
-                        ta xây dựng những con đường rộng mở dẫn đến tương lai.
+                        Từ những con đường tối tăm trong chiến tranh đi xuyên tỉnh, xuyên rừng, xuyên núi quân dân ta
+                        xây dựng những con đường rộng mở dẫn đến tương lai.
                     </p>
                     <div className="inline-block px-6 py-2 bg-amber-50 border-2 border-amber-200 rounded-full">
                         <p className="text-amber-800 font-bold text-sm italic">
