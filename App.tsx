@@ -8,6 +8,7 @@ import { GroundPage } from './pages/GroundPage';
 import { SkyPage } from './pages/SkyPage';
 import { FuturePage } from './pages/FuturePage';
 import { PageId } from './types';
+import { IframeScaler } from './components/IframeScaler';
 
 export default function App() {
   const [activePage, setActivePage] = useState<PageId>('home');
@@ -40,9 +41,9 @@ export default function App() {
         <div className="text-center relative">
           <div className="absolute inset-0 bg-amber-500 blur-2xl opacity-20 animate-pulse"></div>
           <div className="relative z-10">
-              <div className="w-20 h-20 border-t-2 border-b-2 border-amber-500 rounded-full animate-spin mx-auto mb-6"></div>
-              <h1 className="text-white font-serif text-2xl tracking-[0.2em] font-light">DI SẢN VIỆT</h1>
-              <p className="text-stone-500 text-sm mt-2 font-sans tracking-wider">Đang khởi tạo bảo tàng số...</p>
+            <div className="w-20 h-20 border-t-2 border-b-2 border-amber-500 rounded-full animate-spin mx-auto mb-6"></div>
+            <h1 className="text-white font-serif text-2xl tracking-[0.2em] font-light">DI SẢN VIỆT</h1>
+            <p className="text-stone-500 text-sm mt-2 font-sans tracking-wider">Đang khởi tạo bảo tàng số...</p>
           </div>
         </div>
       </div>
@@ -51,8 +52,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-stone-800 bg-stone-50 selection:bg-amber-200 selection:text-amber-900">
+      <IframeScaler />
       <Navigation activePage={activePage} setPage={setActivePage} />
-      
+
       <main className="flex-grow">
         <div className="animate-fade-in w-full">
           {renderPage()}
