@@ -139,7 +139,7 @@ export const FuturePage: React.FC = () => {
                             title="Từ Bầu Trời Lửa... đến Quốc Tế"
                             desc="Bầu trời bom đạn năm xưa nay tấp nập những đường bay quốc tế, đưa Việt Nam vươn mình ra thế giới 5 châu, trở thành điểm đến an toàn và thân thiện."
                             color="blue"
-                            image="https://www.vietnamairlines.com/~/media/ContentImage/TravelInfo/ChuyenBayMoUoc.jpg?la=en"
+                            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiS70cdEbb8dQlIpVuHd-syI8Ra7NKZNYCJQ&s"
                             tag="Hội Nhập"
                             onClick={() => {
                                 setModalOpen('aviation');
