@@ -16,7 +16,7 @@ export const HomePage: React.FC<HomePageProps> = ({ setPage }) => {
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/60 to-stone-950 z-10" />
                     <img
-                        src="https://mod.gov.vn/wcm/connect/045ee540-bcaf-4aca-bfd3-ea7712c0f024/1/1.jpg?MOD=AJPERES"
+                        src="https://file3.qdnd.vn/data/images/0/2024/10/14/upload_2094/duong-truong-son.jpg?dpi=150&quality=100&w=870"
                         className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
                         alt="The resistance war against the US to save the country Memorial"
                     />
